@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EliteEstate — Committee Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#f6f1e7;
+    --ivory-2:#efe8d8;
+    --paper:#fbf8f1;
+    --forest:#1f3d2f;
+    --forest-2:#2d5440;
+    --moss:#4a6b52;
+    --gold:#b08226;
+    --gold-soft:#caa24a;
+    --ink:#21261f;
+    --slate:#6b6a5e;
+    --line:#ddd3bf;
+    --red:#a23b2c;
+    --red-bg:#f4e3df;
+    --green:#2f6b46;
+    --green-bg:#e3eee4;
+    --shadow:0 24px 60px -24px rgba(31,61,47,.32);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Archivo',sans-serif;
+    background:var(--ivory);
+    color:var(--ink);
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  }
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-soft));z-index:99;transition:width .1s linear}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+  .display{font-family:'Fraunces',serif}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    background:
+      radial-gradient(120% 90% at 80% -10%, rgba(176,130,38,.16), transparent 55%),
+      radial-gradient(100% 80% at 0% 110%, rgba(45,84,64,.14), transparent 50%),
+      var(--forest);
+    color:var(--ivory);position:relative;overflow:hidden;
+  }
+  header.hero::after{
+    content:"";position:absolute;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M0 30h60M30 0v60' stroke='%23ffffff' stroke-opacity='.03' stroke-width='1'/%3E%3C/svg%3E");
+    pointer-events:none;
+  }
+  .hero .wrap{width:100%}
+  .diamond{font-size:30px;color:var(--gold-soft);letter-spacing:.5em;margin-bottom:28px}
+  .brand{font-family:'Fraunces',serif;font-weight:600;letter-spacing:.34em;font-size:clamp(15px,2vw,18px);color:var(--gold-soft);text-transform:uppercase}
+  h1.title{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(38px,7.2vw,86px);line-height:1.02;margin:22px 0 26px;
+    letter-spacing:-.015em;max-width:16ch;
+  }
+  h1.title em{font-style:italic;color:var(--gold-soft)}
+  .lede{font-size:clamp(17px,2.1vw,21px);color:rgba(246,241,231,.82);max-width:54ch;font-weight:400}
+  .hero-meta{margin-top:54px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:13.5px;letter-spacing:.04em;color:rgba(246,241,231,.6)}
+  .hero-meta span{padding:7px 15px;border:1px solid rgba(202,162,74,.34);border-radius:100px}
+  .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(246,241,231,.5);animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:96px 0;position:relative}
+  .section-tag{
+    font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:12px;
+  }
+  .section-tag::before{content:"";width:34px;height:1.5px;background:var(--gold)}
+  h2.sec{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(28px,4.4vw,46px);line-height:1.08;letter-spacing:-.01em;max-width:20ch;margin-bottom:22px}
+  h2.sec em{font-style:italic;color:var(--forest-2)}
+  .sec-intro{font-size:18px;color:var(--slate);max-width:60ch;margin-bottom:8px}
+
+  .band{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band-green{background:var(--forest);color:var(--ivory)}
+  .band-green .section-tag{color:var(--gold-soft)}
+  .band-green .section-tag::before{background:var(--gold-soft)}
+  .band-green h2.sec em{color:var(--gold-soft)}
+  .band-green .sec-intro{color:rgba(246,241,231,.78)}
+
+  /* one-line summary block */
+  .summary{
+    background:var(--ivory-2);border-left:4px solid var(--gold);
+    border-radius:4px;padding:34px 38px;margin-top:14px;box-shadow:var(--shadow);
+  }
+  .summary .k{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--gold);letter-spacing:.02em;margin-bottom:10px}
+  .summary p{font-family:'Fraunces',serif;font-size:clamp(19px,2.4vw,25px);line-height:1.45;color:var(--forest)}
+
+  /* ---------- PROBLEM / SOLUTION CARDS ---------- */
+  .pf{display:grid;grid-template-columns:1fr;gap:0;margin:30px 0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+  .pf .num{font-family:'Fraunces',serif;font-size:54px;line-height:1;opacity:.22;font-weight:500}
+  .pf .prob{background:var(--red-bg);border-left:5px solid var(--red);padding:28px 32px}
+  .pf .sol{background:var(--green-bg);border-left:5px solid var(--green);padding:28px 32px}
+  .pf .label{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:10px}
+  .pf .prob .label{color:var(--red)}
+  .pf .sol .label{color:var(--green)}
+  .pf h3{font-family:'Fraunces',serif;font-weight:500;font-size:21px;line-height:1.25;color:var(--ink);margin-bottom:10px}
+  .pf p{font-size:15.5px;color:#3c3f37}
+  .pf .sol p{color:#2a3b30}
+  .pf-head{display:flex;align-items:flex-start;gap:18px}
+  .pf-head .num{color:var(--red)}
+
+  /* ---------- FEATURE THEMES ---------- */
+  .themes{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:40px}
+  .theme{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:30px 30px 26px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+  .theme:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .theme .tnum{font-family:'Fraunces',serif;font-style:italic;color:var(--gold);font-size:15px;letter-spacing:.05em}
+  .theme h3{font-family:'Fraunces',serif;font-weight:500;font-size:23px;line-height:1.18;margin:6px 0 14px;color:var(--forest)}
+  .theme ul{list-style:none}
+  .theme li{font-size:14.5px;color:#41443c;padding-left:20px;position:relative;margin-bottom:9px;line-height:1.5}
+  .theme li::before{content:"◆";position:absolute;left:0;top:1px;color:var(--gold);font-size:9px}
+  .theme li b{color:var(--ink);font-weight:600}
+
+  /* ---------- DECISIONS ---------- */
+  .dec{margin-top:36px;display:grid;gap:14px}
+  .drow{background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:22px 26px;display:grid;grid-template-columns:1.1fr 1.4fr;gap:24px;align-items:start}
+  .drow .q{font-family:'Fraunces',serif;font-size:17.5px;color:var(--forest);font-weight:500;line-height:1.3}
+  .drow .a{font-size:14.5px;color:#41443c}
+  .drow .a .rec{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:5px}
+
+  /* ---------- ROADMAP ---------- */
+  .road{margin-top:42px;position:relative;padding-left:34px}
+  .road::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--gold),var(--moss))}
+  .stage{position:relative;padding:0 0 34px 8px}
+  .stage::before{content:"";position:absolute;left:-32px;top:4px;width:15px;height:15px;border-radius:50%;background:var(--ivory);border:3px solid var(--gold)}
+  .stage:last-child{padding-bottom:0}
+  .stage .sn{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .stage h4{font-family:'Fraunces',serif;font-weight:500;font-size:21px;color:var(--forest);margin:3px 0 7px}
+  .stage p{font-size:15px;color:#41443c;max-width:62ch}
+  .band-green .stage::before{background:var(--forest);border-color:var(--gold-soft)}
+  .band-green .stage h4{color:var(--ivory)}
+  .band-green .stage p{color:rgba(246,241,231,.8)}
+  .band-green .stage .sn{color:var(--gold-soft)}
+  .band-green .road::before{background:linear-gradient(var(--gold-soft),rgba(246,241,231,.3))}
+
+  /* ---------- ASK / CTA ---------- */
+  .ask{background:var(--ivory-2);border:1px solid var(--line);border-radius:12px;padding:42px 44px;margin-top:36px;box-shadow:var(--shadow)}
+  .ask h3{font-family:'Fraunces',serif;font-weight:500;font-size:26px;color:var(--forest);margin-bottom:20px}
+  .ask ol{counter-reset:a;list-style:none}
+  .ask li{counter-increment:a;position:relative;padding:14px 0 14px 52px;border-top:1px solid var(--line);font-size:16.5px;color:#34372f}
+  .ask li:first-child{border-top:none}
+  .ask li::before{content:counter(a);position:absolute;left:0;top:11px;width:32px;height:32px;border-radius:50%;background:var(--forest);color:var(--gold-soft);font-family:'Fraunces',serif;font-size:16px;display:flex;align-items:center;justify-content:center}
+
+  footer{background:var(--forest);color:rgba(246,241,231,.6);text-align:center;padding:46px 0}
+  footer .diamond{margin-bottom:14px}
+  footer .f-line{font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--ivory);max-width:48ch;margin:0 auto 10px}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:760px){
+    .wrap{padding:0 22px}
+    section{padding:64px 0}
+    .themes{grid-template-columns:1fr}
+    .drow{grid-template-columns:1fr;gap:8px}
+    .ask{padding:30px 26px}
+    .summary{padding:26px 24px}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="bar"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="diamond">◆</div>
+    <div class="brand">EliteEstate · Society Platform</div>
+    <h1 class="title">A home for our records, our money, and our <em>history</em>.</h1>
+    <p class="lede">One private platform for our 48-plot society — built to stop the money we lose, end the paperwork that drains the office, and preserve who we are for the generations to come.</p>
+    <div class="hero-meta">
+      <span>Prepared for the Society Committee</span>
+      <span>Problems → Solutions → Plan</span>
+      <span>For discussion &amp; approval</span>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</header>
+
+<!-- WHY -->
+<section>
+  <div class="wrap reveal">
+    <div class="section-tag">Why we are here</div>
+    <h2 class="sec">This is not a pitch about technology. It is about what the society <em>loses</em> today.</h2>
+    <p class="sec-intro">Fees our own laws guarantee, walking out the door. A year-end scramble over a handwritten register. Rules argued over because nobody can find them. Below: each problem stated plainly, each paired with the fix — then the full platform behind it.</p>
+    <div class="summary">
+      <div class="k">The one-line summary</div>
+      <p>Our society is owed money its own laws guarantee, keeps its accounts in a notebook, and risks losing its history. The platform collects what we are owed automatically, puts our money in one clear ledger the whole committee can see, and preserves who we are for the future.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section class="band">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">The problems &amp; the fixes</div>
+      <h2 class="sec">Six things hurting the society — and how each one <em>stops</em>.</h2>
+    </div>
+
+    <div class="pf reveal">
+      <div class="prob">
+        <div class="pf-head"><span class="num">01</span><div>
+          <div class="label">The Problem</div>
+          <h3>Sellers are not paying the 1% transfer fee the society is legally owed.</h3>
+          <p>Society law requires the seller to pay 1% of the sale amount when a plot changes hands. But they don't. By the time a sale is done, the seller has their money and is on their way out — the society has no leverage, and the fee simply walks out the door. Money our own bylaws guarantee, lost on nearly every sale.</p>
+        </div></div>
+      </div>
+      <div class="sol">
+        <div class="label">How the platform solves it</div>
+        <p><b>The sale is not recognised until the 1% is paid.</b> The new owner cannot be linked, the transfer cannot be recorded, and the NOC cannot be issued until the fee clears. We don't chase anyone — the law enforces itself, because the one moment the seller needs the society is the moment the fee is due. A rule that is ignored today becomes a rule that collects itself.</p>
+      </div>
+    </div>
+
+    <div class="pf reveal">
+      <div class="prob">
+        <div class="pf-head"><span class="num">02</span><div>
+          <div class="label">The Problem</div>
+          <h3>The secretary keeps the accounts by hand — and no one can see the real picture.</h3>
+          <p>Expenditure and collections are written by hand in one register. Tedious, slow, error-prone — and the society's entire financial record lives in one person's notebook. If that person is unavailable, so are the records. Nobody can answer “what did we collect and spend this month, and what's our balance?” without hours of flipping pages.</p>
+        </div></div>
+      </div>
+      <div class="sol">
+        <div class="label">How the platform solves it</div>
+        <p><b>One digital ledger for the whole society.</b> Collections flow in automatically as members pay; the secretary records each expense in a few taps — vendor, amount, category, even a photo of the bill. Out comes a live financial picture the whole committee sees anytime: collected, spent, balance, who still owes, where money went. The notebook is replaced by a record that never leaves with one person.</p>
+      </div>
+    </div>
+
+    <div class="pf reveal">
+      <div class="prob">
+        <div class="pf-head"><span class="num">03</span><div>
+          <div class="label">The Problem</div>
+          <h3>Every AGM and audit is a scramble — and members have nothing to verify against.</h3>
+          <p>At year-end, accounts are reconstructed from the handwritten register: days of work. And because the numbers come from one person's book, members who want to question them have nothing independent to check. Even when the secretary is completely honest, the lack of transparency breeds suspicion.</p>
+        </div></div>
+      </div>
+      <div class="sol">
+        <div class="label">How the platform solves it</div>
+        <p><b>At the AGM, you don't prepare the accounts — you open the screen.</b> Every rupee in and out is captured as it happens, so the figures are always ready and always verifiable. Clean, trusted numbers in seconds, and members can see the finances are handled openly. The audit becomes a printout.</p>
+      </div>
+    </div>
+
+    <div class="pf reveal">
+      <div class="prob">
+        <div class="pf-head"><span class="num">04</span><div>
+          <div class="label">The Problem</div>
+          <h3>Our society laws live on paper and get argued over.</h3>
+          <p>The bylaws — including the 1% rule and much else — exist on paper somewhere. When a dispute arises, it's settled by whoever has the oldest photocopy, and members genuinely don't know what the rules say.</p>
+        </div></div>
+      </div>
+      <div class="sol">
+        <div class="label">How the platform solves it</div>
+        <p><b>The complete society laws are built in</b> — official, searchable, on every member's phone. Never again an argument about what a rule says; it's right there, the same version for everyone. The 1% fee in particular is no longer “something the committee wants” but visibly the society's own written law.</p>
+      </div>
+    </div>
+
+    <div class="pf reveal">
+      <div class="prob">
+        <div class="pf-head"><span class="num">05</span><div>
+          <div class="label">The Problem</div>
+          <h3>Selling a plot is clumsy, and the society finds out too late.</h3>
+          <p>When an owner wants to sell, he has no clean way to show a buyer which plot is his and where it sits — he waves at a paper map or drives them around. And the society usually learns of a sale only after it's done, which is exactly why the 1% slips away.</p>
+        </div></div>
+      </div>
+      <div class="sol">
+        <div class="label">How the platform solves it</div>
+        <p><b>Owners list their own plot and show buyers a clean, professional view</b> — the plot highlighted on the map, with size, dimensions, and photos, right from the app. Listing is free and frictionless. But every sale completes through the society's books, where the 1% must clear before the transfer is recorded. The owner gets an easier sale; the society stays in the loop start to finish.</p>
+      </div>
+    </div>
+
+    <div class="pf reveal">
+      <div class="prob">
+        <div class="pf-head"><span class="num">06</span><div>
+          <div class="label">The Problem</div>
+          <h3>Our society's history is at risk of being lost.</h3>
+          <p>How this society was built from empty land, who founded it, the early struggles and milestones — it lives in fading memories and yellowing documents in a drawer. Within a generation, no one will remember how it all began.</p>
+        </div></div>
+      </div>
+      <div class="sol">
+        <div class="label">How the platform solves it</div>
+        <p><b>A heritage vault preserves our story for good.</b> Founding history, early photographs, the people who started it, the milestones along the way — a permanent, living record every future member can see. It is the society's legacy, safe for the generations who will live here long after us. Not just record-keeping — what we leave behind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PLATFORM / THEMES -->
+<section>
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">The full platform</div>
+      <h2 class="sec">Everything the society would run on, in <em>six</em> parts.</h2>
+      <p class="sec-intro">The fixes above sit inside one platform. Here is the whole of it — from the records and money through tenants, community, and how people join.</p>
+    </div>
+    <div class="themes">
+      <div class="theme reveal">
+        <div class="tnum">Part A</div>
+        <h3>Money &amp; collections</h3>
+        <ul>
+          <li><b>One ledger</b> — collections in, expenses tapped in, live balance for the committee.</li>
+          <li><b>Bill everyone at once</b> — set the amount once, bill the whole society in a click; next month can auto-generate.</li>
+          <li><b>Online payments</b> — members pay by UPI, card, or netbanking; bills mark themselves paid.</li>
+          <li><b>1% on every sale</b> — collected automatically before a transfer can complete.</li>
+          <li><b>Automatic reminders</b> — when a bill or notice goes up, members are told.</li>
+        </ul>
+      </div>
+      <div class="theme reveal">
+        <div class="tnum">Part B</div>
+        <h3>Records &amp; the map</h3>
+        <ul>
+          <li><b>Interactive society map</b> — all 48 plots, colour-coded, tap for details.</li>
+          <li><b>Property register</b> — plot number, block, size, dimensions, owner, photos.</li>
+          <li><b>Ownership history</b> — a permanent, auditable trail of every change of hands.</li>
+          <li><b>Society laws built in</b> — official, searchable, same version for all.</li>
+        </ul>
+      </div>
+      <div class="theme reveal">
+        <div class="tnum">Part C</div>
+        <h3>The committee's official channel</h3>
+        <ul>
+          <li><b>Targeted announcements</b> — whole society, one block, or owners only; pin the important ones.</li>
+          <li><b>Read-only for members</b> — the official board shows exactly, and only, what the committee posts.</li>
+          <li><b>Document vault</b> — bylaws, minutes, NOCs, and forms in one place.</li>
+        </ul>
+      </div>
+      <div class="theme reveal">
+        <div class="tnum">Part D</div>
+        <h3>The members-only community feed</h3>
+        <ul>
+          <li><b>Completely private</b> — only verified members; no outsiders, no public link.</li>
+          <li><b>Residents post to each other</b> — text, photos, likes, comments; light categories keep it tidy.</li>
+          <li><b>Real names only</b> — everyone posts under name and plot number.</li>
+          <li><b>Built-in moderation</b> — committee can remove, mute, and members can report.</li>
+        </ul>
+      </div>
+      <div class="theme reveal">
+        <div class="tnum">Part E</div>
+        <h3>Owners, tenants &amp; the register</h3>
+        <ul>
+          <li><b>Owners declare tenants</b> — name, family size, contact, lease dates, kept current by the owner.</li>
+          <li><b>Tenants as lighter members</b> — see notices, join the feed (labelled), but no bills, no vote.</li>
+          <li><b>Compliance made easy</b> — a complete tenant register for police verification, in one place.</li>
+          <li><b>Privacy by design</b> — office sees full details; neighbours see only that a plot is tenant-occupied.</li>
+        </ul>
+      </div>
+      <div class="theme reveal">
+        <div class="tnum">Part F</div>
+        <h3>Joining &amp; plot handovers</h3>
+        <ul>
+          <li><b>Office-created accounts</b> — the committee adds each owner and shares a secure access key; the office stays the gatekeeper.</li>
+          <li><b>Smooth handovers</b> — on a sale, the buyer is linked, the plot marked sold, the seller unlinked — one guided flow.</li>
+          <li><b>Permanent trail</b> — every handover written into ownership history.</li>
+          <li><b>Stays private</b> — only the office can add or remove members.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section class="band">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Decisions for the committee</div>
+      <h2 class="sec">A few choices shape the platform. Here is what <em>we recommend</em>.</h2>
+      <p class="sec-intro">Each comes with a starting recommendation so there's something concrete to react to — adjust as you see fit.</p>
+    </div>
+    <div class="dec">
+      <div class="drow reveal"><div class="q">Who sees tenant details?</div><div class="a"><span class="rec">Recommended</span><br>Office sees full details (contact, ID, lease). Other members see only that a plot is tenant-occupied. Keeps us compliant and safe without turning the directory into a privacy leak.</div></div>
+      <div class="drow reveal"><div class="q">Community feed — open or approved?</div><div class="a"><span class="rec">Recommended</span><br>Open posting; the committee removes anything inappropriate afterwards. Pre-approving every post would re-create the manual work we're trying to remove.</div></div>
+      <div class="drow reveal"><div class="q">Can tenants post in the feed?</div><div class="a"><span class="rec">Recommended</span><br>Yes, clearly labelled “Tenant, Plot A-4.” The official channel and any voting stay owner-only. Letting tenants join is what makes it a community, not a landlords' club.</div></div>
+      <div class="drow reveal"><div class="q">Should the committee post as “the Society”?</div><div class="a"><span class="rec">Recommended</span><br>Yes — a verified badge so official voices stand out from individual posts.</div></div>
+      <div class="drow reveal"><div class="q">How do new owners join?</div><div class="a"><span class="rec">Decided</span><br>The office creates each account directly and shares a secure key — the committee stays the gatekeeper, and the society stays genuinely private.</div></div>
+      <div class="drow reveal"><div class="q">Turn on live online payments now?</div><div class="a"><span class="rec">Optional</span><br>Everything else is free to run. Live payments need a payment provider and a paid hosting tier — so we can approve the whole plan now and switch on the money button when ready.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="band-green">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Suggested rollout</div>
+      <h2 class="sec">Built in stages — each one useful on its <em>own</em>.</h2>
+      <p class="sec-intro">So the society sees value early and nothing is rushed. We can pause between any two stages.</p>
+    </div>
+    <div class="road">
+      <div class="stage reveal"><div class="sn">Stage 1 · Quick wins</div><h4>The money problems</h4><p>The financial ledger, bulk billing, automatic reminders, and the 1% collection on sales. Returns the most to the society for the least effort — and the office feels the relief immediately.</p></div>
+      <div class="stage reveal"><div class="sn">Stage 2 · Community</div><h4>Channel &amp; feed</h4><p>Targeted official announcements, the document vault and society laws, and the members-only community feed with real names and moderation.</p></div>
+      <div class="stage reveal"><div class="sn">Stage 3 · Tenants</div><h4>The growing society</h4><p>Owner-maintained tenant register, tenant logins, and the compliance view — ready as buildings go up and get rented.</p></div>
+      <div class="stage reveal"><div class="sn">Stage 4 · Heritage &amp; selling</div><h4>Legacy &amp; marketplace</h4><p>The heritage vault preserving our founding story, and the owner-led plot listing &amp; buyer view that runs every sale through the books.</p></div>
+      <div class="stage reveal"><div class="sn">Stage 5 · Extras</div><h4>Whatever we prioritise next</h4><p>Complaints &amp; maintenance tracker, amenity booking, member directory, committee dashboard — added as the society wants them.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ASK -->
+<section>
+  <div class="wrap reveal">
+    <div class="section-tag">What we are asking</div>
+    <h2 class="sec">Three things from the committee <em>today</em>.</h2>
+    <div class="ask">
+      <h3>To move forward, we ask for:</h3>
+      <ol>
+        <li>Agreement that these are the problems worth solving.</li>
+        <li>A green light to begin with the money problems — the financial ledger and the 1% collection — which return the most for the least effort.</li>
+        <li>Answers to the open decisions above; our recommendations are a fine starting point.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="diamond" style="letter-spacing:.5em">◆</div>
+    <p class="f-line">Every problem on these pages is real and ours. The platform is simply the most direct way to make each one stop costing the society money, time, and trust — while preserving what makes it worth belonging to.</p>
+    <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin-top:14px;color:rgba(202,162,74,.7)">EliteEstate · Society Platform · For Committee Review</div>
+  </div>
+</footer>
+
+<script>
+  // scroll progress
+  const bar=document.getElementById('bar');
+  addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=p+'%';
+  });
+  // reveal on scroll, staggered within a section
+  const io=new IntersectionObserver((es)=>{
+    es.forEach((e,i)=>{
+      if(e.isIntersecting){
+        const sibs=[...e.target.parentElement.querySelectorAll('.reveal')];
+        e.target.style.transitionDelay=(Math.min(sibs.indexOf(e.target),6)*70)+'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
